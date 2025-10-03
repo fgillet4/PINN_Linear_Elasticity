@@ -11,8 +11,8 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-REM Run the PowerShell setup script
-powershell -ExecutionPolicy Bypass -File "setup_pytorch.ps1"
+REM Run the simplified PowerShell setup script
+powershell -ExecutionPolicy Bypass -NoProfile -File "setup_pytorch_simple.ps1"
 
 echo.
 echo Setup complete! Press any key to exit...
