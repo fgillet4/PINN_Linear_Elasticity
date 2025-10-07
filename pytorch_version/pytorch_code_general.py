@@ -38,13 +38,19 @@ def gradients(u, x, order=1):
 lam = torch.tensor(1.0)
 mu  = torch.tensor(0.5)
 
-#%% Boundary points
+#%% Boundary points (training)
 N_bc = 200
 xb = torch.rand(N_bc,1)
 yb = torch.rand(N_bc,1)
 
 left = torch.cat([torch.zeros_like(yb), yb], dim=1)
 bottom = torch.cat([xb, torch.zeros_like(xb)], dim=1)
+
+#%% Validation points
+N_val = 500
+x_val = torch.rand(N_val, 1, requires_grad=True)
+y_val = torch.rand(N_val, 1, requires_grad=True)
+xy_val = torch.cat([x_val, y_val], dim=1)
 
 #%% Training Loop
 params = list(ux_net.parameters()) + list(uy_net.parameters()) + \
@@ -108,14 +114,19 @@ plt.xlabel("Epochs")
 plt.ylabel("Loss (log scale)")
 plt.title("Loss vs Epochs")
 plt.grid(True)
+plt.savefig('loss_history_general.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 #%% Collocation points visualization
 plt.figure()
-plt.scatter(x.detach().numpy(), y.detach().numpy(), s=5, alpha=0.5)
+plt.scatter(x.detach().numpy(), y.detach().numpy(), s=5, alpha=0.7, c='blue', label='Training points')
+plt.scatter(x_val.detach().numpy(), y_val.detach().numpy(), s=5, alpha=0.7, c='red', label='Validation points')
 plt.xlabel("x")
 plt.ylabel("y")
-plt.title("Collocation points")
+plt.title("Collocation Points Distribution")
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.savefig('collocation_points_general.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 #%% Compute predicted u_x, u_y and errors
