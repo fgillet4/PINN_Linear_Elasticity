@@ -27,27 +27,34 @@ experimented with weighing the terms in different ways.
 
 Extra Challenge
 
-Train it here and create some other problem w different problem w diff geometry and see if it generalizes. MAterial parameters as input and do a bunch of different data points with actualy parameters knows. The parameters as a 
+Train it here and create some other problem w different problem w diff geometry and see if it generalizes.
+Material parameters as input and do a bunch of different data points with actual parameters known. 
+The parameters  
+
+Validate/test the model with some some different geometries, cylinder, cube.
+Create training data, shap
+When FEM is too hard to solve you cna make a surrogate model
 
 Add plasticity
 recurrent model that has hidden variable that takes care of the plastic accumulated strain 
 
-Create some different geometry, run some finite elements, phyics loss and data loss part. You have your model and some stress strain curve. 
+Create some different geometry, run some finite elements, phyics loss and data loss part. 
+You have your model and some stress strain curves. 
 
-Abba
+Abbacus FEM
 surrogate model that you train up. 
 
 
 Hyper parameters 
 OPtimizer what u use
-Adam everyone knows its always okay, there are other that are better requires 
+Adam everyone knows its always okay, there are other that are better requires more tuning 
 Do more iterations
 
 lasso and ridge, alot is built 
 
 Adam, has labda weight decay. Lasso 2. IT only changeds the weights it checks the gradients, it checks the size of the weights. Your loss function will change.
 
-L2 regularization, called weight decay is somethign we can addd gto the loss function. Can make convergence harder. Might be more robust compare lasso and ridge. 
+L2 regularization, called weight decay is somethign we can add to the loss function. Can make convergence harder. Might be more robust compare lasso and ridge. 
 
 learn rate scheduling. Learn rate. grad(loss fn) weights will
 w = w -alpha*grad(loss)
@@ -58,10 +65,16 @@ lr
 
 optimizer = torch.optim.Adam(model.parameters(), lr= 1e-2)
 
-lr i slearn rate, too small learn rate might get stuck, too large
+lr i slearn rate, too small learn rate might get stuck in local minima, too large leran rate and it might jump past the global minima
 
 learn rate scheduling, start w large learnrate then slowly decreate it.
 
 LRScheduler, change the learn rate, depending on the training epoch.
 
 
+
+Extra Challenges
+1. For same problem we can find the FEM solution.
+2. L2 regularization, weight decay requires more tuning. Should prevent overfitting.
+3. LRate Scheduler
+4. Input different material parameter 
