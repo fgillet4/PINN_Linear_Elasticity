@@ -1,0 +1,67 @@
+Intro of problem
+
+Background
+
+What tools
+
+Methodology
+
+How we solved it
+
+Results
+
+What we can use it for
+
+Tensile test
+
+Digital Image correlation
+
+Noisy for accurate measurements
+
+15 min
+
+put focus on the loss function
+
+experimented with weighing the terms in different ways.
+
+
+Extra Challenge
+
+Train it here and create some other problem w different problem w diff geometry and see if it generalizes. MAterial parameters as input and do a bunch of different data points with actualy parameters knows. The parameters as a 
+
+Add plasticity
+recurrent model that has hidden variable that takes care of the plastic accumulated strain 
+
+Create some different geometry, run some finite elements, phyics loss and data loss part. You have your model and some stress strain curve. 
+
+Abba
+surrogate model that you train up. 
+
+
+Hyper parameters 
+OPtimizer what u use
+Adam everyone knows its always okay, there are other that are better requires 
+Do more iterations
+
+lasso and ridge, alot is built 
+
+Adam, has labda weight decay. Lasso 2. IT only changeds the weights it checks the gradients, it checks the size of the weights. Your loss function will change.
+
+L2 regularization, called weight decay is somethign we can addd gto the loss function. Can make convergence harder. Might be more robust compare lasso and ridge. 
+
+learn rate scheduling. Learn rate. grad(loss fn) weights will
+w = w -alpha*grad(loss)
+
+alpha is the learn rate
+
+lr
+
+optimizer = torch.optim.Adam(model.parameters(), lr= 1e-2)
+
+lr i slearn rate, too small learn rate might get stuck, too large
+
+learn rate scheduling, start w large learnrate then slowly decreate it.
+
+LRScheduler, change the learn rate, depending on the training epoch.
+
+
