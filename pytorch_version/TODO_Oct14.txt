@@ -1,0 +1,2 @@
+Add the loss vs epoch for training data for validation data to understand after what epoch it starts to deviate.
+
