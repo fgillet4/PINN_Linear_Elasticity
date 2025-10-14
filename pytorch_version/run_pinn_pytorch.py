@@ -269,7 +269,7 @@ for i, ax in enumerate(axes.flat):
     ax.set_title(U_total_name[i])
 
 fig.colorbar(im, ax=axes.ravel().tolist())
-fig.savefig('solution_pytorch.png')
+fig.savefig('results/solution_pytorch.png')
 
 # Calculate exact solutions for comparison
 ux_ext_flat = u_x_ext(torch.tensor(X.flatten(), dtype=DTYPE), torch.tensor(Y.flatten(), dtype=DTYPE))
@@ -288,7 +288,7 @@ for i, ax in enumerate(axes.flat):
     ax.set_title(error_total_name[i])
 
 fig.colorbar(im, ax=axes.ravel().tolist())
-fig.savefig('error_map_pytorch.png')
+fig.savefig('results/error_map_pytorch.png')
 
 # Plot stress components
 S_total = [Sxx, Syy, Sxy]
@@ -299,7 +299,7 @@ for i, ax in enumerate(axes.flat):
     ax.set_title(S_total_name[i])
 
 fig.colorbar(im, ax=axes.ravel().tolist())
-fig.savefig('stress_map_pytorch.png')
+fig.savefig('results/stress_map_pytorch.png')
 
 # Plot loss history
 fig = plt.figure(figsize=(9, 6))
@@ -307,7 +307,7 @@ ax = fig.add_subplot(111)
 ax.semilogy(range(len(hist)), hist, 'k-')
 ax.set_xlabel('$n_{epoch}$')
 ax.set_ylabel('$\\phi_{n_{epoch}}$')
-fig.savefig('loss_history_pytorch.png')
+fig.savefig('results/loss_history_pytorch.png')
 
 # Save model
 torch.save(model.state_dict(), 'solidmechanics_model_pytorch.pt')
